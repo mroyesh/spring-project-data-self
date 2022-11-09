@@ -8,6 +8,7 @@ public class TicketingProjectDataApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(TicketingProjectDataApplication.class, args);
+
     }
 
 }
