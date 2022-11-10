@@ -24,20 +24,18 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<RoleDTO> listAllRoles() {
-//        controller called me and requesting all the RoleDTOs is it can show in the drop-down in the UI
-//        I need to make a call to db and get all the roles from tables
-//        Go to repo and find a service which gives me the roles from db
-//        how I will call any service here?// DI
-
        List<Role> roleList= roleRepository.findAll();
         return roleList.stream().map(roleMapper::convertToDto).collect(Collectors.toList());
 
-
-
+        //        controller called me and requesting all the RoleDTOs is it can show in the drop-down in the UI
+//        I need to make a call to db and get all the roles from tables
+//        Go to repo and find a service which gives me the roles from db
+//        how I will call any service here?// DI
     }
 
     @Override
     public RoleDTO findById(Long id) {
-        return null;
+
+        return roleMapper.convertToDto(roleRepository.findById(id).get());
     }
 }
