@@ -4,6 +4,7 @@ import com.cydeo.dto.UserDTO;
 import com.cydeo.entity.User;
 import com.cydeo.repository.UserRepository;
 import com.cydeo.service.UserService;
+import org.hibernate.annotations.Where;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +61,15 @@ public class UserServiceImpl implements UserService {
         userRepository.save(convertedUser);
 
         return findByUserName(user.getUserName());
+
+    }
+
+    @Override
+    public void delete(String username) {
+        User user= userRepository.findByUserName(username);
+        user.setIsDeleted(true);
+        userRepository.save(user);
+
 
     }
 }
