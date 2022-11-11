@@ -1,9 +1,11 @@
 package com.cydeo.entity;
+
 import com.cydeo.enums.Status;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,11 +14,14 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "users")
+@Table(name = "projects")
 @Where(clause = "is_deleted=false")
-public class Project extends BaseEntity{
+public class Project extends BaseEntity {
 
+
+    @Column(unique = true)
     private String projectCode;
+
     private String projectName;
 
     @Column(columnDefinition = "DATE")
@@ -28,7 +33,7 @@ public class Project extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Status projectStatus;
 
-    private  String projectDetail;
+    private String projectDetail;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id")

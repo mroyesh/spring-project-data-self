@@ -1,15 +1,15 @@
 package com.cydeo.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RoleDTO {
 
     private Long id;
-
     private String description;
 
 }
