@@ -11,7 +11,8 @@ import org.springframework.stereotype.Component;
 @ConfigurationPropertiesBinding
 public class RoleDtoConverter implements Converter<String, RoleDTO> {
 
-    private  final RoleService roleService;
+
+    RoleService roleService;
 
     public RoleDtoConverter(@Lazy RoleService roleService) {
         this.roleService = roleService;
@@ -20,7 +21,7 @@ public class RoleDtoConverter implements Converter<String, RoleDTO> {
     @Override
     public RoleDTO convert(String source) {
 
-        if (source == null || source.equals("")) {
+        if (source == null || source.equals("")) {  //  Select  -> ""
             return null;
         }
 

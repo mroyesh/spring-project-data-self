@@ -1,7 +1,6 @@
 package com.cydeo.controller;
 
 import com.cydeo.dto.ProjectDTO;
-import com.cydeo.dto.UserDTO;
 import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -10,7 +9,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 @RequestMapping("/project")
@@ -18,6 +16,7 @@ public class ProjectController {
 
     private final UserService userService;
     private final ProjectService projectService;
+
     public ProjectController(UserService userService, ProjectService projectService) {
         this.userService = userService;
         this.projectService = projectService;
@@ -31,11 +30,9 @@ public class ProjectController {
         model.addAttribute("projects", projectService.listAllProjects());
 
         return "/project/create";
-
     }
-
     @PostMapping("/create")
-    public String insertProject( @ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
+    public String insertProject(@ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
 
@@ -76,7 +73,7 @@ public class ProjectController {
     }
 
     @PostMapping("/update")
-    public String updateProject( @ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
+    public String updateProject(@Valid @ModelAttribute("project") ProjectDTO project, BindingResult bindingResult, Model model) {
 
         if (bindingResult.hasErrors()) {
 
@@ -92,7 +89,7 @@ public class ProjectController {
         return "redirect:/project/create";
 
     }
-
+//
 //    @GetMapping("/manager/project-status")
 //    public String getProjectByManager(Model model) {
 //
