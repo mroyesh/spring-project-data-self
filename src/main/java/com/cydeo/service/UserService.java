@@ -12,7 +12,6 @@ public interface UserService {
     UserDTO findByUserName(String username);
 //    why username instead of primary key?
 //    bcz when we updated user/ we pass based on username
-
     void save(UserDTO user);
 
     void deleteByUserName(String username);
@@ -20,4 +19,6 @@ public interface UserService {
     UserDTO update(UserDTO user);
 
     void delete(String username);
+
+    List<UserDTO>listAllByRole(String role);
 }

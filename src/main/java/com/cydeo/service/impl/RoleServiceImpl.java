@@ -18,7 +18,6 @@ public class RoleServiceImpl implements RoleService {
 
     public RoleServiceImpl(RoleRepository roleRepository, RoleMapper roleMapper) {
         this.roleRepository = roleRepository;
-
         this.roleMapper = roleMapper;
     }
 

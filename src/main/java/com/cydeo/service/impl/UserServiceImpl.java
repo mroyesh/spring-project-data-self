@@ -52,9 +52,9 @@ public class UserServiceImpl implements UserService {
     public UserDTO update(UserDTO user) {
 
         //Find current user
-        User user1 = userRepository.findByUserName(user.getUserName());  //has id
+        User user1 = userRepository.findByUserName(user.getUserName());
         //Map update user dto to entity object
-        User convertedUser = userMapper.convertToEntity(user);   // has id?
+        User convertedUser = userMapper.convertToEntity(user);
         //set id to the converted object
         convertedUser.setId(user1.getId());
         //save the updated user in the db
@@ -69,6 +69,16 @@ public class UserServiceImpl implements UserService {
         User user= userRepository.findByUserName(username);
         user.setIsDeleted(true);
         userRepository.save(user);
+
+
+    }
+
+    @Override
+    public List<UserDTO> listAllByRole(String role) {
+
+        List<User> users= userRepository.findByRoleDescriptionIgnoreCase(role);
+
+        return users.stream().map(userMapper::convertToDto).collect(Collectors.toList());
 
 
     }
