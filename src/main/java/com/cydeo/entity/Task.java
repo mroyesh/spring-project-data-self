@@ -10,9 +10,9 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "tasks")
 @Getter
 @Setter
-@Table(name = "tasks")
 @NoArgsConstructor
 @Where(clause = "is_deleted=false")
 public class Task extends BaseEntity{
@@ -23,7 +23,7 @@ public class Task extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Status taskStatus;
 
-    @Column(columnDefinition = "DATA")
+    @Column(columnDefinition = "DATE")
     private LocalDate assignedDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -33,6 +33,4 @@ public class Task extends BaseEntity{
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
-
-
 }

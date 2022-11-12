@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
-import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -17,7 +16,6 @@ import java.time.LocalDate;
 @Table(name = "projects")
 @Where(clause = "is_deleted=false")
 public class Project extends BaseEntity {
-
 
     @Column(unique = true)
     private String projectCode;
