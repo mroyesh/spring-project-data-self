@@ -22,7 +22,6 @@ public class User extends BaseEntity {
     private String passWord;
     private boolean enabled;
     private String phone;
-
     @ManyToOne
     private Role role;
 

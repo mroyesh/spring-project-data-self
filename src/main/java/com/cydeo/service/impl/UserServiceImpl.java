@@ -68,8 +68,8 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUserName(username);
         user.setIsDeleted(true);
         userRepository.save(user);
-
     }
+
 
     @Override
     public List<UserDTO> listAllByRole(String role) {

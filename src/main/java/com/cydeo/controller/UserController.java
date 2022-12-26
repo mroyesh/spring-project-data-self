@@ -69,11 +69,8 @@ public class UserController {
             model.addAttribute("users", userService.listAllUsers());
 
             return "/user/update";
-
         }
-
         userService.update(user);
-
         return "redirect:/user/create";
 
     }
